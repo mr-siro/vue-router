@@ -17,15 +17,7 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-// Install BootstrapVue
-Vue.use(BootstrapVue)
-// Optionally install the BootstrapVue icon components plugin
-Vue.use(IconsPlugin)
 export default {
 name: "AuthForm",
   data() {
@@ -41,6 +33,11 @@ name: "AuthForm",
       console.log(user)
       //save the user to localStorage
       localStorage.setItem('user', JSON.stringify(user));
+      const profile = localStorage.getItem('user');
+      if(profile) {
+        this.$router.push({path:'dashboard'})
+      }
+
     }
   }
 }
